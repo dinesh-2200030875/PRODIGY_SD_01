@@ -1,0 +1,51 @@
+/*task 1 --> Temperature Conversion Program **/
+
+#include <stdio.h>
+
+void convertFromCelsius(float temp) {
+    float fahrenheit = (temp * 9/5) + 32;
+    float kelvin = temp + 273.15;
+    printf("%.2f Celsius is equivalent to %.2f Fahrenheit and %.2f Kelvin.\n", temp, fahrenheit, kelvin);
+}
+
+void convertFromFahrenheit(float temp) {
+    float celsius = (temp - 32) * 5/9;
+    float kelvin = (temp - 32) * 5/9 + 273.15;
+    printf("%.2f Fahrenheit is equivalent to %.2f Celsius and %.2f Kelvin.\n", temp, celsius, kelvin);
+}
+
+void convertFromKelvin(float temp) {
+    float celsius = temp - 273.15;
+    float fahrenheit = (temp - 273.15) * 9/5 + 32;
+    printf("%.2f Kelvin is equivalent to %.2f Celsius and %.2f Fahrenheit.\n", temp, celsius, fahrenheit);
+}
+
+int main() {
+    float temp;
+    char unit;
+
+    printf("Enter temperature value: ");
+    scanf("%f", &temp);
+    printf("Enter the unit of measurement (C for Celsius, F for Fahrenheit, K for Kelvin): ");
+    scanf(" %c", &unit);
+
+    switch(unit) {
+        case 'C':
+        case 'c':
+            convertFromCelsius(temp);
+            break;
+        case 'F':
+        case 'f':
+            convertFromFahrenheit(temp);
+            break;
+        case 'K':
+        case 'k':
+            convertFromKelvin(temp);
+            break;
+        default:
+            printf("Invalid unit of measurement.\n");
+            break;
+    }
+
+    return 0;
+}
